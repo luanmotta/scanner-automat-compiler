@@ -1,0 +1,22 @@
+[1] IDENTIFICADOR 1
+[2] IDENTIFICADOR 1
+[3] INT
+[4] IDENTIFICADOR 2
+[5] IDENTIFICADOR 3
+[6] NÚMERO INTEIRO 4
+[8] NÚMERO REAL 5
+[9] FLOAT
+[11] REAL
+[13] DOUBLE
+[15] IDENTIFICADOR 2
+[16] COMENTÁRIO
+[19] CHAR
+
+Tabela de Símbolos
+1 - a
+2 - asd
+3 - as123
+4 - 99
+5 - 99.999
+
+O programa possui erros nas linhas: 7, 10, 12, 14, 17 e 18
