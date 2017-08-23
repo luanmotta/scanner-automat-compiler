@@ -7,6 +7,10 @@
     "start": "node src/index.js",
     "test": "node src/index.js test/entrada.txt test/entrada.txt"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luanmotta/scanner-automato-compilador"
+  },
   "author": "Luan Motta",
   "license": "ISC",
   "devDependencies": {
