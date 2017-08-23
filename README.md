@@ -15,7 +15,7 @@ a tabela de símbolos
 a lista das linhas onde os erros aparecem (caso tenham erros no arquivo)
 
 ### Exemplo de arquivo de entrada:
-
+```
 a
 a
 int
@@ -35,9 +35,9 @@ asd
 -- Teste
 Tales Viegas --
 char
-
+```
 ### Exemplo de saída para o arquivo acima:
-
+```
 [1] IDENTIFICADOR 1
 [2] IDENTIFICADOR 1
 [3] INT
@@ -51,12 +51,14 @@ char
 [15] IDENTIFICADOR 2
 [16] COMENTÁRIO
 [19] CHAR
-
+```
 Tabela de Símbolos
+```
 1 - a
 2 - asd
 3 - as123
 4 - 99
 5 - 99.999
+```
 
-O programa possui erros nas linhas: 7, 10, 12, 14, 17 e 18
+`O programa possui erros nas linhas: 7, 10, 12, 14, 17 e 18`
