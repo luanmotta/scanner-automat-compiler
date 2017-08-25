@@ -1,26 +1,18 @@
-const fs = require('fs');
+const { readFileSync } = require('fs');
 const pathToInputFile  = process.argv[2];
-const pathToOutputFile = process.argv[3];
+const pathToOutputFile = process.argv[3] || null;
 
-const formatFile = (file) => file.toString('utf-8');
+const readFileSyncUtf8 = (path) => readFileSync(path, 'utf-8');
 
-const response = (inputFile, outputFile) => ({
-  'inputFile': formatFile(inputFile),
-  'outputFile': outputFile && formatFile(outputFile)
+const response = (inputPath, outputPath) => ({
+  'inputFile': readFileSyncUtf8(inputPath),
+  'outputFile': outputPath && readFileSyncUtf8(outputPath)
 });
 
 module.exports = new Promise((resolve, reject) => {
   if (!pathToInputFile) {
     reject('É necessário informar o caminho do arquivo de entrada');
   }
-  fs.createReadStream(pathToInputFile)
-    .on('data', inputFile => {
-      if (!pathToOutputFile)
-        resolve(response(inputFile, null));
 
-      fs.createReadStream(pathToOutputFile)
-        .on('data', outputFile => {
-          resolve(response(inputFile, outputFile));
-        });
-    });
+  resolve(response(pathToInputFile, pathToOutputFile));
 });
