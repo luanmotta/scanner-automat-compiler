@@ -1,21 +1,20 @@
-const main = new Promise((resolve, reject) => {
+const main = () => new Promise((resolve, reject) => {
 
   require('./readFiles')
     .then(({ inputFile, outputFile }) => {
 
-      // do tratamene here
-      const entrada = inputFile;
+      const scannerOutput = require('./scanner')(inputFile);
 
-      if (outputFile) {
-        resolve(entrada === outputFile ? 'Test passed' : 'Test failed');
-      }
-
+      if (outputFile)
+        resolve(scannerOutput === outputFile ? 'Test passed' : 'Test failed');
+      else
+        resolve(scannerOutput);
     })
     .catch(reject);
 });
 
 (() => {
-  main
+  main()
     .then(output => console.log(output))
     .catch(err => console.log(err.message));
 })();

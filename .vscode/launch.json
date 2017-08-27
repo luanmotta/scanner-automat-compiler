@@ -9,10 +9,10 @@
       "request": "launch",
       "name": "Launch Program",
       "program": "${workspaceRoot}/src/index.js",
-      "args": [
-        "test/entrada.txt",
-        "test/entrada.txt"
-      ]
+      "env": {
+        "inputFile": "test/entrada.txt",
+        "outputFile": "test/saida.txt"
+      }
     }
   ]
 }
