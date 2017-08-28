@@ -4,7 +4,8 @@ const reservedWords = types.reservedWords;
 const isNumber = (char) => (/[0-9]/).test(char);
 const isLetter = (char) => (/[A-Za-z]/).test(char);
 
-const done = (char, returnValue) => char.length === 0 ? returnValue : types.error;
+// the string have to be ended when done is called
+const done = (char, returnValue) =>  char.length === 0 ? returnValue : types.error;
 
 const B = (line, index) => {
   const char = line.charAt(index);
@@ -56,7 +57,7 @@ const C = (line, index) => {
     return D(line, index + 1);
   }
 
-  return types.int;
+  done(char, types.int);
 };
 
 const G = (line, index) => {

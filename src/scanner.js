@@ -1,21 +1,32 @@
-// const table = require('./table');
 const automato = require('./automato');
-const { error } = require('./types');
+const { insertAtTable } = require('./Table');
+const { error, id } = require('./types');
 
 const errorList = [];
 
-const format = (array) => {
+const format = (tokensArray, textArray) => {
   const formatedArray = [];
 
-  array.forEach((line, index) => {
+  tokensArray.forEach((line, index) => {
     if (line === error) {
       errorList.push(index + 1);
     } else {
-      formatedArray.push(line = `${index + 1} ${line}`);
+      formatedArray.push(line = `[${index + 1}] ${line}`);
+
+      // if this line is an identifier
+      if (line === id) {
+
+        // insert the identifier at the symbols table
+        const idNumber = insertAtTable(textArray[index]);
+
+        // and add in the formatedArray the symbol number
+        formatedArray[index].concat(` ${idNumber}`);
+      }
     }
   });
 
-  return formatedArray;
+  // join all lines again
+  return formatedArray.join('\n');
 };
 
 module.exports = (inputFile) => {
@@ -26,8 +37,8 @@ module.exports = (inputFile) => {
   // Classificate tokens of each line of array using automato
   const tokenized = separatedLinesArray.map(line => automato(line));
 
-  // Formate with lines, remove errors and enumerates identifiers
-  const formated = format(tokenized);
+  // Formate with lines, remove errors
+  const formated = format(tokenized, separatedLinesArray);
 
   console.log(formated);
 
