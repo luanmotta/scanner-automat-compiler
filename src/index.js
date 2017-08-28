@@ -1,4 +1,4 @@
-const main = () => new Promise((resolve, reject) => {
+const main = new Promise((resolve, reject) => {
 
   require('./readFiles')
     .then(({ inputFile, outputFile }) => {
@@ -13,8 +13,9 @@ const main = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-(() => {
-  main()
-    .then(output => console.log(output))
-    .catch(err => console.log(err.message));
-})();
+main
+  .then(output => {
+    console.log(output);
+    process.exit();
+  })
+  .catch(err => console.log(err.message));

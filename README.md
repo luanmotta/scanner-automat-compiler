@@ -1,5 +1,19 @@
 # Scanner-automato-compilador
 
+install dependencies:
+`npm install`
+
+run project (Output at console):
+`npm start <input_file_path>`
+
+run project (Comparing output with another file):
+`npm start <input_file_path> <output_file_path`
+
+run test:
+`npm run test`
+
+## Problemática:
+
 Crie um autômato para reconhecer linguagens cujos tokens são os seguintes:
 
 identificadores iniciados por uma letra, podendo possuir depois zero ou mais números ou letras
@@ -13,6 +27,8 @@ Ao final da análise, o autômato deve exibir:
 os tokens de entrada (e a linha onde eles aparecem)
 a tabela de símbolos
 a lista das linhas onde os erros aparecem (caso tenham erros no arquivo)
+
+
 
 ### Exemplo de arquivo de entrada:
 ```

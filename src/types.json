@@ -1,0 +1,18 @@
+{
+  "reservedWords": {
+    "int": "INT",
+    "double": "DOUBLE",
+    "float": "FLOAT",
+    "real": "REAL",
+    "break": "BREAK",
+    "case": "CASE",
+    "char": "CHAR",
+    "const": "CONST",
+    "continue": "CONTINUE"
+  },
+  "comment": "COMENTARIO",
+  "id": "IDENTIFICADOR",
+  "int": "NÚMERO INTEIRO",
+  "real": "NÙMERO REAL",
+  "error": "ERRO"
+}
