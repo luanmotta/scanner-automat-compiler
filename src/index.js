@@ -18,4 +18,4 @@ main
     console.log(output);
     process.exit();
   })
-  .catch(err => console.log(err.message));
+  .catch(err => console.log(err));
