@@ -1,16 +1,7 @@
 const automato = require('./automato');
 const Table = require('./Table');
+const ErrorList = require('./ErrorList');
 const types = require('./types');
-
-const errorList = [];
-
-const getFormatedErrorList = () => {
-  // Separate array by commas
-  const separatedByCommas = errorList.join(", ");
-
-  // Return the string with the last comma replaced by 'e'
-  return separatedByCommas.replace(/,(?=[^,]*$)/, ' e');
-};
 
 const joinAll = (arrayFormated) => {
   return `${arrayFormated}
@@ -18,7 +9,7 @@ const joinAll = (arrayFormated) => {
 Tabela de Símbolos
 ${Table.get()}
 
-O programa possui erros nas linhas: ${getFormatedErrorList()}`;
+O programa possui erros nas linhas: ${ErrorList.get()}`;
 };
 
 const format = (tokensArray, textArray) => {
@@ -26,7 +17,7 @@ const format = (tokensArray, textArray) => {
 
   tokensArray.forEach((line, index) => {
     if (line === types.error) {
-      errorList.push(index + 1);
+      ErrorList.insert(index);
     } else {
 
       // if this line is an identifier, int or real
@@ -62,8 +53,6 @@ module.exports = (inputFile) => {
 
   // Join the formated array, the failed lines and the symbols together
   const joined = joinAll(formated);
-
-  console.log(joined);
 
   return joined;
 
