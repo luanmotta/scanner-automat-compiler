@@ -57,7 +57,7 @@ const C = (line, index) => {
     return D(line, index + 1);
   }
 
-  done(char, types.int);
+  return done(char, types.int);
 };
 
 const G = (line, index) => {

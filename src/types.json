@@ -10,9 +10,9 @@
     "const": "CONST",
     "continue": "CONTINUE"
   },
-  "comment": "COMENTARIO",
+  "comment": "COMENTÁRIO",
   "id": "IDENTIFICADOR",
   "int": "NÚMERO INTEIRO",
-  "real": "NÙMERO REAL",
+  "real": "NÚMERO REAL",
   "error": "ERRO"
 }

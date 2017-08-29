@@ -28,8 +28,6 @@ os tokens de entrada (e a linha onde eles aparecem)
 a tabela de símbolos
 a lista das linhas onde os erros aparecem (caso tenham erros no arquivo)
 
-
-
 ### Exemplo de arquivo de entrada:
 ```
 a

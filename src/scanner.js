@@ -1,27 +1,47 @@
 const automato = require('./automato');
-const { insertAtTable } = require('./Table');
-const { error, id } = require('./types');
+const Table = require('./Table');
+const types = require('./types');
 
 const errorList = [];
+
+const getFormatedErrorList = () => {
+  // Separate array by commas
+  const separatedByCommas = errorList.join(", ");
+
+  // Return the string with the last comma replaced by 'e'
+  return separatedByCommas.replace(/,(?=[^,]*$)/, ' e');
+};
+
+const joinAll = (arrayFormated) => {
+  return `${arrayFormated}
+
+Tabela de Símbolos
+${Table.get()}
+
+O programa possui erros nas linhas: ${getFormatedErrorList()}`;
+};
 
 const format = (tokensArray, textArray) => {
   const formatedArray = [];
 
   tokensArray.forEach((line, index) => {
-    if (line === error) {
+    if (line === types.error) {
       errorList.push(index + 1);
     } else {
-      formatedArray.push(line = `[${index + 1}] ${line}`);
 
-      // if this line is an identifier
-      if (line === id) {
+      // if this line is an identifier, int or real
+      if (line === types.id || line === types.int || line === types.real) {
+        // insert the identifier at the symbols table, and get the id number
+        const identifierNumber = Table.insert(textArray[index]);
 
-        // insert the identifier at the symbols table
-        const idNumber = insertAtTable(textArray[index]);
+        // this line will contain the id number of the table at formatedArray
+        formatedArray.push(`[${index + 1}] ${line} ${identifierNumber}`);
+      } else {
 
-        // and add in the formatedArray the symbol number
-        formatedArray[index].concat(` ${idNumber}`);
+        // if this line is not an identifier, don't use the identifier number at formated array
+        formatedArray.push(`[${index + 1}] ${line}`);
       }
+
     }
   });
 
@@ -40,8 +60,11 @@ module.exports = (inputFile) => {
   // Formate with lines, remove errors
   const formated = format(tokenized, separatedLinesArray);
 
-  console.log(formated);
+  // Join the formated array, the failed lines and the symbols together
+  const joined = joinAll(formated);
 
-  console.log(errorList);
+  console.log(joined);
+
+  return joined;
 
 };
